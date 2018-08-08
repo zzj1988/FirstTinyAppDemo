@@ -1,0 +1,5 @@
+<!--pages/mainGame.wxml-->
+
+<view class='mainView'>mainView
+</view>
+<canvas canvas-id='can'></canvas>
