@@ -5,8 +5,11 @@
   background-color: red;
   position:absolute;
 }
-.can{
-   width:60%;
-   height:60%; 
+.map{
+   width:200px;
+   height:200px;
+   left: 25%;
+   top: 25%; 
    background-color: black;
+   align-content:center;
 }
