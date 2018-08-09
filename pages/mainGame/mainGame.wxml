@@ -1,6 +1,9 @@
-<!--pages/mainGame.wxml-->
 
-<view class='mainView'>
-<canvas class='map' canvas-id='can'></canvas>
-</view>
+<canvas class='mapView' canvas-id='canvas'></canvas>
+
+<view id='upBtn' class='up' bindtap='clickDirect'>上</view>
+<view id='leftBtn' class='left' bindtap='clickDirect'>左</view>
+<view id='rightBtn' class='right' bindtap='clickDirect'>右</view>
+<view id='downBtn' class='down' bindtap='clickDirect'>下</view>
+
 
