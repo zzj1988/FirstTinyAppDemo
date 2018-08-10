@@ -35,6 +35,11 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    t: 0,
+    sn: [42, 41],
+    dz: 43,
+    fx: 1,
+    n: 0,
   }
 })
