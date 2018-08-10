@@ -19,8 +19,9 @@ Page({
     ctx.setFillStyle(c); //设置颜色
 
     //绘制图形，显示时的左上角（x,y）坐标，图形的宽高（设置成18可能是因为存在边框）
-    ctx.rect(t % 20 * 20 + 1, ~~(t / 20) * 20 + 1, 18, 18);
-    ctx.fill();
+    ctx.fillRect(t % 20 * 20 + 1, ~~(t / 20) * 20 + 1, 18, 18);
+    // ctx.fill();
+    ctx.draw();
     getApp().globalData.t = t;
     getApp().globalData.sn = sn;
     getApp().globalData.dz = dz;
@@ -42,12 +43,12 @@ Page({
       sn.unshift(n = sn[0] + fx);
       if (sn.indexOf(n, 1) > 0 || n < 0 || n > 399 || fx == 1 && n % 20 == 0 || fx == -1 && n % 20 == 19)
         return alert("GAME OVER");
-      that.draw(n, "Lime");
+      that.draw(n, 'lime');
       if (n == dz) {
         while (sn.indexOf(dz = ~~(Math.random() * 400)) >= 0);
-        that.draw(dz, "Yellow");
+        that.draw(dz, 'Yellow');
       } else {
-        that.draw(sn.pop(), "Black");
+        that.draw(sn.pop(), 'Black');
       }
 
       setTimeout(arguments.callee, 130);
