@@ -10,10 +10,10 @@ Page({
   },
   draw: function(t, c) {
     // var t = getApp().globalData.t;
-    var sn = getApp().globalData.sn;
-    var dz = getApp().globalData.dz;
-    var fx = getApp().globalData.fx;
-    var n = getApp().globalData.n;
+    // var sn = getApp().globalData.sn;
+    // var dz = getApp().globalData.dz;
+    // var fx = getApp().globalData.fx;
+    // var n = getApp().globalData.n;
 
     var ctx = wx.createCanvasContext('canvas');
     ctx.setFillStyle(c); //设置颜色
@@ -22,11 +22,10 @@ Page({
     ctx.fillRect(t % 20 * 20 + 1, ~~(t / 20) * 20 + 1, 18, 18);
     // ctx.fill();
     ctx.draw();
-    getApp().globalData.t = t;
-    getApp().globalData.sn = sn;
-    getApp().globalData.dz = dz;
-    getApp().globalData.fx = fx;
-    getApp().globalData.n = n;
+    // getApp().globalData.sn = sn;
+    // getApp().globalData.dz = dz;
+    // getApp().globalData.fx = fx;
+    // getApp().globalData.n = n;
   },
   /**
    * 生命周期函数--监听页面加载
@@ -42,16 +41,17 @@ Page({
     !function () {
       sn.unshift(n = sn[0] + fx);
       if (sn.indexOf(n, 1) > 0 || n < 0 || n > 399 || fx == 1 && n % 20 == 0 || fx == -1 && n % 20 == 19)
-        return alert("GAME OVER");
-      that.draw(n, 'lime');
+        return wx.showModal("GAME OVER");
+      console.log(n);
+      that.draw(n, 'red');
       if (n == dz) {
         while (sn.indexOf(dz = ~~(Math.random() * 400)) >= 0);
-        that.draw(dz, 'Yellow');
+        that.draw(dz, 'yellow');
       } else {
-        that.draw(sn.pop(), 'Black');
+        // that.draw(sn.pop(), 'black');
       }
-
-      setTimeout(arguments.callee, 130);
+//重复回调，每次间隔130毫秒，控制时间快慢
+      setTimeout(arguments.callee, 500);
 
       getApp().globalData.t = t;
       getApp().globalData.sn = sn;
