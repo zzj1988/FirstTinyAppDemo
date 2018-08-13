@@ -1,31 +1,23 @@
 // pages/mainGame.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
         keycode:0
   },
   draw: function(t, c) {
-    // var t = getApp().globalData.t;
-    // var sn = getApp().globalData.sn;
-    // var dz = getApp().globalData.dz;
-    // var fx = getApp().globalData.fx;
-    // var n = getApp().globalData.n;
-
     var ctx = wx.createCanvasContext('canvas');
     ctx.setFillStyle(c); //设置颜色
-
     //绘制图形，显示时的左上角（x,y）坐标，图形的宽高（设置成18可能是因为存在边框）
     ctx.fillRect(t % 20 * 20 + 1, ~~(t / 20) * 20 + 1, 18, 18);
-    // ctx.fill();
     ctx.draw();
-    // getApp().globalData.sn = sn;
-    // getApp().globalData.dz = dz;
-    // getApp().globalData.fx = fx;
-    // getApp().globalData.n = n;
+    ctx.save();
+    wx.drawCanvas({
+      canvasId: 'canvas',
+      actions: ctx.getActions(),
+      reserve: true
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -48,10 +40,10 @@ Page({
         while (sn.indexOf(dz = ~~(Math.random() * 400)) >= 0);
         that.draw(dz, 'yellow');
       } else {
-        // that.draw(sn.pop(), 'black');
+        that.draw(sn.pop(), 'black');
       }
-//重复回调，每次间隔130毫秒，控制时间快慢
-      setTimeout(arguments.callee, 500);
+//重复回调，每次间隔xx毫秒，控制时间快慢
+      setTimeout(arguments.callee, 900);
 
       getApp().globalData.t = t;
       getApp().globalData.sn = sn;
@@ -106,7 +98,7 @@ Page({
    */
   onShow: function () {
 
-
+    console.log("App-OnShow");
   
   },
 
